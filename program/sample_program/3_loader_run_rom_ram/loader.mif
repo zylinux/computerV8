@@ -1,0 +1,170 @@
+-- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Your use of Intel Corporation's design tools, logic functions
+-- and other software and tools, and its AMPP partner logic
+-- functions, and any output files from any of the foregoing
+-- (including device programming or simulation files), and any
+-- associated documentation or information are expressly subject
+-- to the terms and conditions of the Intel Program License
+-- Subscription Agreement, the Intel Quartus Prime License Agreement,
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details.
+
+-- Quartus Prime generated Memory Initialization File (.mif)
+
+WIDTH=32;
+DEPTH=256;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+	0    :   10000000;
+	1    :   0c010000;
+	2    :   3c210010;
+	3    :   0c210184;
+	4    :   0c020000;
+	5    :   3c420010;
+	6    :   0c4201bc;
+	7    :   0c030000;
+	8    :   3c630010;
+	9    :   0c6301ec;
+	10   :   0c040000;
+	11   :   3c840010;
+	12   :   0c84021c;
+	13   :   54200000;
+	14   :   00000000;
+	15   :   0c148000;
+	16   :   3e940010;
+	17   :   0c150000;
+	18   :   3eb50010;
+	19   :   0eb53fff;
+	20   :   5e950004;
+	21   :   54800000;
+	22   :   00000000;
+	23   :   0c100015;
+	24   :   54400000;
+	25   :   00000000;
+	26   :   10a52800;
+	27   :   54600000;
+	28   :   00000000;
+	29   :   0c060001;
+	30   :   42060008;
+	31   :   00000000;
+	32   :   0c100006;
+	33   :   54400000;
+	34   :   00000000;
+	35   :   0c062000;
+	36   :   3cc60010;
+	37   :   50c00000;
+	38   :   00000000;
+	39   :   54600000;
+	40   :   00000000;
+	41   :   08103800;
+	42   :   54600000;
+	43   :   00000000;
+	44   :   08104000;
+	45   :   0c090080;
+	46   :   114a5000;
+	47   :   116b5800;
+	48   :   54600000;
+	49   :   00000000;
+	50   :   21705800;
+	51   :   3e100018;
+	52   :   08106000;
+	53   :   54600000;
+	54   :   00000000;
+	55   :   21705800;
+	56   :   3e100010;
+	57   :   09906000;
+	58   :   54600000;
+	59   :   08000000;
+	60   :   21705800;
+	61   :   3e100008;
+	62   :   09906000;
+	63   :   54600000;
+	64   :   08000000;
+	65   :   21705800;
+	66   :   09906000;
+	67   :   0c0d2000;
+	68   :   3dad0010;
+	69   :   3cae0007;
+	70   :   21ca7000;
+	71   :   21cd6800;
+	72   :   5dac0000;
+	73   :   254a0004;
+	74   :   4549ffe5;
+	75   :   00000000;
+	76   :   54600000;
+	77   :   00000000;
+	78   :   08106000;
+	79   :   20e83800;
+	80   :   0c0d00ff;
+	81   :   44ed000a;
+	82   :   00000000;
+	83   :   056b00ff;
+	84   :   458b0007;
+	85   :   00000000;
+	86   :   0c100006;
+	87   :   54400000;
+	88   :   00000000;
+	89   :   24a50001;
+	90   :   44000004;
+	91   :   00000000;
+	92   :   0c100015;
+	93   :   54400000;
+	94   :   00000000;
+	95   :   4000ffbb;
+	96   :   00000000;
+	97   :   0c106000;
+	98   :   3e100010;
+	99   :   5a110000;
+	100  :   06310001;
+	101  :   40110007;
+	102  :   00000000;
+	103  :   5a110004;
+	104  :   5a110000;
+	105  :   16310001;
+	106  :   5cd10000;
+	107  :   4400fff7;
+	108  :   00000000;
+	109  :   53e00000;
+	110  :   00000000;
+	111  :   0c116000;
+	112  :   3e310010;
+	113  :   5e300004;
+	114  :   5a320000;
+	115  :   06520002;
+	116  :   4012fffd;
+	117  :   00000000;
+	118  :   5a320000;
+	119  :   16520002;
+	120  :   5e320000;
+	121  :   53e00000;
+	122  :   00000000;
+	123  :   0c116000;
+	124  :   3e310010;
+	125  :   5a320000;
+	126  :   06520001;
+	127  :   4012fffb;
+	128  :   00000000;
+	129  :   5a300004;
+	130  :   5a320000;
+	131  :   16520001;
+	132  :   5e320000;
+	133  :   53e00000;
+	134  :   00000000;
+	135  :   0c108000;
+	136  :   3e100010;
+	137  :   5a110000;
+	138  :   4411fffe;
+	139  :   00000000;
+	140  :   5a110000;
+	141  :   4011fffe;
+	142  :   00000000;
+	143  :   53e00000;
+	144  :   00000000;
+	[145..255]  :   00000000;
+END;

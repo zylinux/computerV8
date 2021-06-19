@@ -1,5 +1,5 @@
 Analysis & Synthesis report for chip_top
-Fri Jun 18 14:57:58 2021
+Fri Jun 18 17:59:59 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -65,7 +65,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 18 14:57:58 2021           ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun 18 17:59:58 2021           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; chip_top                                        ;
 ; Top-level Entity Name              ; chip_top                                        ;
@@ -183,7 +183,7 @@ refer to the applicable agreement for further details.
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.1%      ;
 ;     Processor 3            ;   0.1%      ;
-;     Processor 4            ;   0.1%      ;
+;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 +----------------------------+-------------+
@@ -1244,7 +1244,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Fri Jun 18 14:57:31 2021
+    Info: Processing started: Fri Jun 18 17:59:31 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpuV8 -c chip_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -1496,9 +1496,9 @@ Info (21057): Implemented 4891 device resources after synthesis - the final reso
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4858 megabytes
-    Info: Processing ended: Fri Jun 18 14:57:58 2021
-    Info: Elapsed time: 00:00:27
+    Info: Peak virtual memory: 4864 megabytes
+    Info: Processing ended: Fri Jun 18 17:59:59 2021
+    Info: Elapsed time: 00:00:28
     Info: Total CPU time (on all processors): 00:00:37
 
 

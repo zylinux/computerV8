@@ -3,19 +3,19 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 21.577
+Slack : 21.056
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 37.959
+Slack : 35.885
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.452
+Slack : 0.451
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 50.319
+Slack : 50.246
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_ref'
@@ -31,11 +31,11 @@ Slack : 49.721
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 23.216
+Slack : 22.643
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 38.679
+Slack : 36.729
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[0]'
@@ -43,7 +43,7 @@ Slack : 0.400
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 50.308
+Slack : 50.247
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_ref'
@@ -59,19 +59,19 @@ Slack : 49.722
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 37.356
+Slack : 37.353
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 44.572
+Slack : 43.733
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.185
+Slack : 0.186
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk_gen|altera_dcm_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 50.082
+Slack : 50.054
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_ref'

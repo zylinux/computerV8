@@ -1,11 +1,11 @@
-;;; ロケーションアドレスの設定
-	LOCATE	0x20000000
+;;; ram address
+LOCATE	0x20000000
 
-;;; シンボルの定義
-GPIO_BASE_ADDR_H	EQU	0x8000			;GPIO Base Address High
-GPIO_IN_OFFSET		EQU	0x0				;GPIO Input Port Register Offset
-GPIO_OUT_OFFSET		EQU	0x4				;GPIO Output Port Register Offset
-
+;;; define
+GPIO_BASE_ADDR_H	EQU	0x8000						;GPIO Base Address High
+GPIO_IN_OFFSET		EQU	0x0								;GPIO Input Port Register Offset
+GPIO_OUT_OFFSET		EQU	0x4								;GPIO Output Port Register Offset
+;;;data to show from 0-9
 7SEG_DATA_0			EQU	0xC0
 7SEG_DATA_1			EQU	0xF9
 7SEG_DATA_2			EQU	0xA4
@@ -17,181 +17,146 @@ GPIO_OUT_OFFSET		EQU	0x4				;GPIO Output Port Register Offset
 7SEG_DATA_8			EQU	0x80
 7SEG_DATA_9			EQU	0x90
 
-
 	XORR	r0,r0,r0
-
-;;; サブルーチンコールのコール先をレジスタにセット
-	ORI		r0,r1,high(CONV_NUM_TO_7SEG_DATA)	;ラベルCONV_NUM_TO_7SEG_DATAの上位16ビットをr1にセット
+;;; set function call
+	ORI		r0,r1,high(CONV_NUM_TO_7SEG_DATA)
 	SHLLI	r1,r1,16
-	ORI		r1,r1,low(CONV_NUM_TO_7SEG_DATA)	;ラベルCONV_NUM_TO_7SEG_DATAの下位16ビットをr1にセット
+	ORI		r1,r1,low(CONV_NUM_TO_7SEG_DATA)	;r1=CONV_NUM_TO_7SEG_DATA
 
-	ORI		r0,r2,high(SET_GPIO_OUT)			;ラベルSET_GPIO_OUTの上位16ビットをr2にセット
+	ORI		r0,r2,high(SET_GPIO_OUT)
 	SHLLI	r2,r2,16
-	ORI		r2,r2,low(SET_GPIO_OUT)				;ラベルSET_GPIO_OUTの上位16ビットをr2にセット
+	ORI		r2,r2,low(SET_GPIO_OUT)						;r2=SET_GPIO_OUT
 
-	ORI		r0,r3,high(WAIT_PUSH_SW)			;ラベルWAIT_PUSH_SWの上位16ビットをr3にセット
+	ORI		r0,r3,high(WAIT_PUSH_SW)
 	SHLLI	r3,r3,16
-	ORI		r3,r3,low(WAIT_PUSH_SW)				;ラベルWAIT_PUSH_SWの上位16ビットをr3にセット
+	ORI		r3,r3,low(WAIT_PUSH_SW)						;r3=WAIT_PUSH_SW
 
-;;; カウンターの値を初期化
+;;; reset count
 _COUNTER_RESET:
-	ORI		r0,r4,0
+	ORI		r0,r4,0														;r4=0 this is the count
 
 _7SEG_COUNTER_LOOP:
-;;; 7セグ点灯
-	ORR		r0,r4,r16					;カウンターの値を引数にセット
-	CALL	r1							;CONV_NUM_TO_7SEG_DATA呼び出し
-	ANDR	r0,r0,r0					;NOP
+;;; light up
+	ORR		r0,r4,r16													;r16=r4 paramter
+	CALL	r1																;call CONV_NUM_TO_7SEG_DATA
+	ANDR	r0,r0,r0													;NOP
 
-	ORR		r0,r17,r16					;出力データを引数にセット
-	CALL	r2							;SET_GPIO_OUT呼び出し
-	ANDR	r0,r0,r0					;NOP
+	ORR		r0,r17,r16												;r16=r17 paramter
+	CALL	r2																;call SET_GPIO_OUT
+	ANDR	r0,r0,r0													;NOP
 
-	CALL	r3							;WAIT_PUSH_SW呼び出し
-	ANDR	r0,r0,r0					;NOP
+	CALL	r3																;call WAIT_PUSH_SW
+	ANDR	r0,r0,r0													;NOP
 
 _COUNT_UP:
-	ADDUI	r4,r4,1
-	ORI		r0,r5,100
-	BE		r5,r4,_COUNTER_RESET
-	ANDR	r0,r0,r0					;NOP
+	ADDUI	r4,r4,1														;each time plus 1
+	ORI		r0,r5,10													;r5=10
+	BE		r5,r4,_COUNTER_RESET							;if r4==r5 means over 10 reset
+	ANDR	r0,r0,r0													;NOP
 	BE		r0,r0,_7SEG_COUNTER_LOOP
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0													;NOP
 
 
 CONV_NUM_TO_7SEG_DATA:
-	;; 下位の桁から数字を抽出
-	ORR		r0,r16,r18					;r16をr18にコピー
-	XORR	r17,r17,r17					;Return Valueのクリア
-	XORR	r19,r19,r19					;0:1桁目(7SEG2), 1:2桁目(7SEG1)
-	XORR	r20,r20,r20					;2桁目の値
-	;; 10の位の値を求める
-	ORI		r0,r21,10					;r21に10をいれる
+	;; get low bits
+	ORR		r0,r16,r18					;r18=r16
+	XORR	r17,r17,r17					;r17=0 -Return Value clear
+	XORR	r20,r20,r20					;r20=0
+	;; 10
+	ORI		r0,r21,10						;r21=10
 _SUB10:
-	BUGT	r18,r21,_CHECK_0			;r18<r21(r18<10)ならば_CHECK_0にとぶ
-	ANDR	r0,r0,r0					;NOP
+	BUGT	r18,r21,_CHECK_0		;if r18<r21(it means r18<10) jump to _CHECK_0
+	ANDR	r0,r0,r0						;NOP
 	ADDUI	r18,r18,-10
 	ADDUI	r20,r20,1
-	BE		r0,r0,_SUB10				;r21<r18ならばSUB10にとぶ
-	ANDR	r0,r0,r0					;NOP
+	BE		r0,r0,_SUB10				;r21<r18 jump to _SUB10
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_0:
-	ORI		r0,r21,0
-	BNE		r18,r21,_CHECK_1
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_0
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,0						;r21=0
+	BNE		r18,r21,_CHECK_1		;if(r18!=0)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_0	;load 0 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_1:
-	ORI		r0,r21,1
-	BNE		r18,r21,_CHECK_2
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_1
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,1						;r21=1
+	BNE		r18,r21,_CHECK_2		;if(r18!=1)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_1	;load 1 to show
 	BE		r0,r0,_SET_RETURN_VALUE
 	ANDR	r0,r0,r0					;NOP
 
 _CHECK_2:
-	ORI		r0,r21,2
-	BNE		r18,r21,_CHECK_3
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_2
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,2						;r21=2
+	BNE		r18,r21,_CHECK_3		;if(r18!=2)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_2	;load 2 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_3:
-	ORI		r0,r21,3
-	BNE		r18,r21,_CHECK_4
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_3
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,3						;r21=3
+	BNE		r18,r21,_CHECK_4		;if(r18!=3)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_3	;load 3 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_4:
-	ORI		r0,r21,4
-	BNE		r18,r21,_CHECK_5
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_4
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,4						;r21=4
+	BNE		r18,r21,_CHECK_5		;if(r18!=4)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_4	;load 4 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_5:
-	ORI		r0,r21,5
-	BNE		r18,r21,_CHECK_6
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_5
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,5						;r21=5
+	BNE		r18,r21,_CHECK_6		;if(r18!=5)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_5	;load 5 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_6:
-	ORI		r0,r21,6
-	BNE		r18,r21,_CHECK_7
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_6
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,6						;r21=6
+	BNE		r18,r21,_CHECK_7		;if(r18!=6)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_6	;load 6 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_7:
-	ORI		r0,r21,7
-	BNE		r18,r21,_CHECK_8
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_7
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,7						;r21=7
+	BNE		r18,r21,_CHECK_8		;if(r18!=7)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_7	;load 7 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_8:
-	ORI		r0,r21,8
-	BNE		r18,r21,_CHECK_9
-	ANDR	r0,r0,r0					;NOP
-	ORI		r0,r22,7SEG_DATA_8
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r21,8						;r21=8
+	BNE		r18,r21,_CHECK_9		;if(r18!=8)
+	ANDR	r0,r0,r0						;NOP
+	ORI		r0,r22,7SEG_DATA_8	;load 8 to show
 	BE		r0,r0,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
+	ANDR	r0,r0,r0						;NOP
 
 _CHECK_9:
-	ORI		r0,r22,7SEG_DATA_9
-	BNE		r0,r19,_SET_RETURN_VALUE
-	ANDR	r0,r0,r0					;NOP
-	SHLLI	r22,r22,8					;7SEG2用の8ビットシフト
+	ORI		r0,r22,7SEG_DATA_9	;load 9 to show
+	BE		r0,r0,_SET_RETURN_VALUE
+	ANDR	r0,r0,r0						;NOP
 
 _SET_RETURN_VALUE:
-	ORR		r17,r22,r17
-	BNE		r0,r19,_CONV_NUM_TO_7SEG_DATA_RETURN
-	ANDR	r0,r0,r0					;NOP
-_NEXT_DIGIT:
-	ORR		r0,r20,r18
-	ORI		r19,r19,1					;0:1桁目(7SEG2), 1:2桁目(7SEG1)
-	BE		r0,r0,_CHECK_0
-	ANDR	r0,r0,r0					;NOP
+	ORR		r17,r22,r17					;r17=r22 load x to show
+	BE		r0,r0,_CONV_NUM_TO_7SEG_DATA_RETURN
+	ANDR	r0,r0,r0						;NOP
+
 _CONV_NUM_TO_7SEG_DATA_RETURN:
-	JMP		r31
-	ANDR	r0,r0,r0					;NOP
+	JMP		r31									;return back to CALL r1
+	ANDR	r0,r0,r0						;NOP
 
 
 SET_GPIO_OUT:

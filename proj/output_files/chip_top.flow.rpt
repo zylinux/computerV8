@@ -1,5 +1,5 @@
 Flow report for chip_top
-Fri Jun 18 14:58:28 2021
+Fri Jun 18 18:00:30 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,14 +40,14 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Fri Jun 18 14:58:28 2021           ;
+; Flow Status                        ; Successful - Fri Jun 18 18:00:30 2021           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; chip_top                                        ;
 ; Top-level Entity Name              ; chip_top                                        ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE10F17C8                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 3,630 / 10,320 ( 35 % )                         ;
+; Total logic elements               ; 3,624 / 10,320 ( 35 % )                         ;
 ;     Total combinational functions  ; 3,474 / 10,320 ( 34 % )                         ;
 ;     Dedicated logic registers      ; 1,907 / 10,320 ( 18 % )                         ;
 ; Total registers                    ; 1907                                            ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/18/2021 14:57:33 ;
+; Start date & time ; 06/18/2021 17:59:33 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; chip_top            ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 220964533082699.162404265205048        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 220964533082699.162405357201168        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
@@ -103,12 +103,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:26     ; 1.0                     ; 4858 MB             ; 00:00:36                           ;
-; Fitter               ; 00:00:13     ; 1.2                     ; 5759 MB             ; 00:00:19                           ;
+; Analysis & Synthesis ; 00:00:26     ; 1.0                     ; 4864 MB             ; 00:00:36                           ;
+; Fitter               ; 00:00:13     ; 1.2                     ; 5763 MB             ; 00:00:19                           ;
 ; Assembler            ; 00:00:01     ; 1.0                     ; 4714 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.3                     ; 4854 MB             ; 00:00:06                           ;
-; EDA Netlist Writer   ; 00:00:05     ; 1.0                     ; 4712 MB             ; 00:00:06                           ;
-; Total                ; 00:00:50     ; --                      ; --                  ; 00:01:08                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.4                     ; 4853 MB             ; 00:00:06                           ;
+; EDA Netlist Writer   ; 00:00:06     ; 1.0                     ; 4712 MB             ; 00:00:06                           ;
+; Total                ; 00:00:51     ; --                      ; --                  ; 00:01:08                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
